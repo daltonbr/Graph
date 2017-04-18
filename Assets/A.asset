@@ -11,13 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceb18626facf45879b85361a7a1d1a6, type: 3}
   m_Name: A
   m_EditorClassIdentifier: 
-  nodeName: 
-  coord:
-    x: 2
-    y: 3
+  nodeName: A
+  coord: {x: 0, y: 15}
   thisColor: {r: 0.03676468, g: 0.23793103, b: 1, a: 1}
   connections:
-  - nodeName: 
-    distance: 1
-  - nodeName: 
-    distance: 2
+  - nodeName: B
+    distance: 3
