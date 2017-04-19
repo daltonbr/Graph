@@ -39,10 +39,10 @@ MonoBehaviour:
     - nodeName: T
       distance: 11
   - nodeName: Z
-    coord: {x: 2, y: 40}
+    coord: {x: -2, y: 20}
     thisColor: {r: 0, g: 1, b: 0.2965517, a: 0}
     connections:
-    - nodeName: C
+    - nodeName: I
       distance: 4
-    - nodeName: T
+    - nodeName: B
       distance: 11
