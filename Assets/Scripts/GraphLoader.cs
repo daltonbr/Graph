@@ -24,6 +24,7 @@ public class GraphLoader : MonoBehaviour
 			GameObject go = Instantiate(nodePrefab, (new Vector3(n.coord.x, n.coord.y)), Quaternion.identity) as GameObject;
 			go.name = n.nodeName;
 			go.transform.SetParent(this.transform);
+			go.GetComponent<SpriteRenderer>().color = n.color;
             for (int i = 0; i < n.connections.Length; i++)
             {
             }

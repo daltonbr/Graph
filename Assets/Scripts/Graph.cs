@@ -14,7 +14,7 @@ public class Node
 {
     public string nodeName;
     public Vector2 coord;
-    public Color thisColor = Color.white;
+    public Color color = Color.blue;
     public NodeConnection[] connections;
 }
 
