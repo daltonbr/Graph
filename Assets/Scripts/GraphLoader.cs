@@ -2,35 +2,51 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GraphLoader : MonoBehaviour
 {
-
-    public string graphName;
+	public GameObject nodePrefab;
     public Graph graph;
-    public Node[] nodes;
+    private Node[] nodes;
 
     void Awake()
     {
-        if (graph == null) { Debug.LogError("Graph not loaded!"); }
-        // Loading a graph from file (not working yet)
-        //Graph graph = (Graph)AssetDatabase.LoadAssetAtPath("Assets/Graph/Graph.asset", typeof(Graph));
+		Assert.IsNotNull(graph, "GraphLoader():: graph is null");
         nodes = graph.nodes;
     }
 
     public void Start()
     {
-        // just for debug purposes
-        // Print all node names in the graph...
         foreach (Node n in nodes)
         {
-            Debug.Log(n.nodeName);
             // ...and its respective nodeConnections
+			GameObject go = Instantiate(nodePrefab, (new Vector3(n.coord.x, n.coord.y)), Quaternion.identity) as GameObject;
+			go.name = n.nodeName;
             for (int i = 0; i < n.connections.Length; i++)
             {
-                Debug.Log(n.connections[i].nodeName + " : " + n.connections[i].distance);  
             }
         }
     }
+
+	// Draw lines to represent EDGES
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.blue;
+		if (nodes != null)
+		{
+			foreach (Node n in nodes)
+			{
+				for (int i = 0; i < n.connections.Length; i++)
+				{
+					GameObject go = GameObject.Find(n.connections[i].nodeName);
+					if (go != null)
+					{
+						Gizmos.DrawLine(n.coord, go.transform.position);
+					}
+				}
+			}
+		}
+	}
 
 }

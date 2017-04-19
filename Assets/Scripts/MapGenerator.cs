@@ -26,7 +26,7 @@ public class MapGenerator : MonoBehaviour
 
 		for (int y = 0; y < mapHeight; y++) {
 			for (int x = 0; x < mapWidth; x++) {
-				GameObject newTile = Instantiate(tilePrefab, new Vector3(-mapWidth/2 + x, -mapHeight/2 + y, 0f), Quaternion.identity) as GameObject; 
+				GameObject newTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity) as GameObject; 
 				//return new Vector3(-currentMap.mapSize.x / 2f + 0.5f + x, 0f, -currentMap.mapSize.y / 2f + 0.5f + y) * tileSize;
 				newTile.name = x.ToString() + "-" + y.ToString();
 				newTile.transform.parent = mapHolder;

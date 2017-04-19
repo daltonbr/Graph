@@ -17,9 +17,4 @@ public class GraphGenerator : ScriptableObject
         Selection.activeObject = graphAsset;
     }
 
-    //[MenuItem("Assets/Load/My Graph")]
-    //static void ImportGraph()
-    //{
-    //    Graph graph = (Graph)AssetDatabase.LoadAssetAtPath("Assets/Graph/Graph.asset", typeof (Graph));
-    //}
 }
