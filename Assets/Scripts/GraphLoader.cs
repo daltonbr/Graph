@@ -8,7 +8,7 @@ public class GraphLoader : MonoBehaviour
 {
 	public GameObject nodePrefab;
     public Graph graph;
-    private Node[] nodes;
+	private List<Node> nodes;
 
     void Awake()
     {
@@ -25,9 +25,6 @@ public class GraphLoader : MonoBehaviour
 			go.name = n.nodeName;
 			go.transform.SetParent(this.transform);
 			go.GetComponent<SpriteRenderer>().color = n.color;
-            for (int i = 0; i < n.connections.Length; i++)
-            {
-            }
         }
     }
 
@@ -39,9 +36,9 @@ public class GraphLoader : MonoBehaviour
 		{
 			foreach (Node n in nodes)
 			{
-				for (int i = 0; i < n.connections.Length; i++)
+				foreach (Edge e in n.edges)
 				{
-					GameObject go = GameObject.Find(n.connections[i].nodeName);
+					GameObject go = GameObject.Find(e.destinyNodeName);
 					if (go != null)
 					{
 						Gizmos.DrawLine(n.coord, go.transform.position);

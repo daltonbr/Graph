@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
 		float minY = graph.nodes[0].coord.y;
 		float maxY = graph.nodes[0].coord.y;
 
-		for (int i = 1; i < graph.nodes.Length; i++)
+		for (int i = 1; i < graph.nodes.Count; i++)
 		{
 			minX = (Mathf.Min(graph.nodes[i].coord.x, minX));
 			maxX = (Mathf.Max(graph.nodes[i].coord.x, maxX));

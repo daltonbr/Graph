@@ -15,6 +15,7 @@ public class GraphGenerator : ScriptableObject
         EditorUtility.FocusProjectWindow();
 
         Selection.activeObject = graphAsset;
+
     }
 
 }
