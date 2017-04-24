@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodePrefab: {fileID: 1741027356682890, guid: a2a52e325291d446b90c253f8d9c5a1b, type: 2}
+  edgePrefab: {fileID: 1006150500481818, guid: e9c643cb18d54704a83a4504d9bc6b99, type: 2}
   graph: {fileID: 11400000, guid: 6db98a6b5659b487aa9c9f65e88e629f, type: 2}
   pathfind: {fileID: 965735412}
   path: []

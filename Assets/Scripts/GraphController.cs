@@ -7,6 +7,7 @@ using UnityEngine.Assertions;
 public class GraphController : MonoBehaviour
 {
 	public GameObject nodePrefab;
+    public GameObject edgePrefab;
     public Graph graph;
 	public Pathfind pathfind;
 	private List<Node> nodes;
@@ -32,6 +33,7 @@ public class GraphController : MonoBehaviour
 		pathfind = GetComponent<Pathfind>();
 		Assert.IsNotNull(graph, "GraphLoader():: graph is null");
 		Assert.IsNotNull(pathfind, "GraphLoader():: pathfind is null");
+        Assert.IsNotNull(edgePrefab, "GraphLoader():: edgePrefab is null");
         nodes = graph.nodes;
     }
 
@@ -54,6 +56,17 @@ public class GraphController : MonoBehaviour
 
 			nodeObjects.Add(nodeObj);
 			obj.transform.SetParent(this.transform);
+
+            // Draw the Edgess
+            foreach (Edge e in n.edges)
+            {
+                GameObject edgeObj = Instantiate(edgePrefab, (new Vector3(n.coord.x, n.coord.y)), Quaternion.identity) as GameObject;
+                var lineRenderer = edgeObj.GetComponent<LineRenderer>();
+                // Initial edge position
+                lineRenderer.SetPosition(0, edgeObj.transform.position);
+                // Final edge position
+                lineRenderer.SetPosition(1, graph.GetNodeFromString(e.destinyNodeName).coord );
+            }
         }
 
         // Set default start and target nodes
@@ -156,3 +169,4 @@ public class GraphController : MonoBehaviour
 	}
 
 }
+
