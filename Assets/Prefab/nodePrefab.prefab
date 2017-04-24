@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 58817699050649556}
   - component: {fileID: 114545574409377972}
   m_Layer: 9
-  m_Name: NodePrefab
+  m_Name: nodePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

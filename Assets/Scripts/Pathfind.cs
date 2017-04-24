@@ -27,7 +27,6 @@ public class Pathfind : MonoBehaviour {
 		}
 
 		string pathVisited = "BFS visited path: ";
-		targetNode = graph.nodes[graph.nodes.Count-1];	//last node
 
 		Debug.Log("Tracing route BFS: "+ startNode.nodeName + " to " + targetNode.nodeName);
 
@@ -88,6 +87,25 @@ public class Pathfind : MonoBehaviour {
 				neighbours.Add(_node);		
 			}
 		}
+
+        // TODO: rethink the graph structure to avoid this clumky, expensive and avoidable cross-reference query
+        // Loop all other nodes
+        foreach (Node n in graph.nodes)
+        {
+            // Verifiy in their edges if we have a reference to our original node
+            foreach (Edge e in n.edges)
+            {
+                // except in the own original node
+                if (n == node) { continue; }
+
+                // match
+                if (e.destinyNodeName == node.nodeName)
+                {
+                    //Debug.Log("CrossReference in " + n.nodeName);
+                    neighbours.Add(n);
+                }
+            }
+        }
 		return neighbours;
 	}
 
