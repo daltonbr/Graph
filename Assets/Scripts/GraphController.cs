@@ -50,16 +50,16 @@ public class GraphController : MonoBehaviour
 			NodeObject nodeObj = obj.GetComponent<NodeObject>();
             n.nodeObject = nodeObj;
 			nodeObj.node = n;
+            nodeObj.SetTextLabel(n.nodeName);
 
 			nodeObjects.Add(nodeObj);
 			obj.transform.SetParent(this.transform);
         }
 
         // Set default start and target nodes
-
-        //startNode = nodes[0];
-        //targetNode = graph.nodes[graph.nodes.Count - 1];    //last node
-        
+        SetInitialState(nodeObjects[0]);
+        SetTargetState(nodeObjects[nodes.Count-1]);
+                
     }
 
     public void SetDefaultStateToAllNodes()
@@ -101,12 +101,6 @@ public class GraphController : MonoBehaviour
 
 	targetNode = nodeObject.node;
 	}
-
-//	NodeObject GetNodeObjectFromName(string nodeName)
-//	{
-//		nodeObjects.Find(nodeName(nodeName));
-//	}
-
 
 	public void HighlightPath(List<Node> path)
 	{
