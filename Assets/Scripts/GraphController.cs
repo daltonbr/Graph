@@ -61,6 +61,8 @@ public class GraphController : MonoBehaviour
             foreach (Edge e in n.edges)
             {
                 GameObject edgeObj = Instantiate(edgePrefab, (new Vector3(n.coord.x, n.coord.y)), Quaternion.identity) as GameObject;
+                edgeObj.name = e.destinyNodeName;
+                edgeObj.transform.SetParent(nodeObj.transform);
                 var lineRenderer = edgeObj.GetComponent<LineRenderer>();
                 // Initial edge position
                 lineRenderer.SetPosition(0, edgeObj.transform.position);
