@@ -16,12 +16,12 @@ public class GraphController : MonoBehaviour
 	public Node startNode;
 	public Node targetNode;
 
-	public Sprite normalStatesprite;
+	public Sprite defaultStateSprite;
 	public Sprite initialStatesprite;
 	public Sprite targetStatesprite;
 	public Sprite pathStatesprite;
 
-	public Color normalStateColor;
+	public Color defaultStateColor;
 	public Color initialStateColor;
 	public Color targetStateColor;
 	public Color pathStateColor;
@@ -46,17 +46,23 @@ public class GraphController : MonoBehaviour
             // ...and its respective node Edges
 			GameObject obj = Instantiate(nodePrefab, (new Vector3(n.coord.x, n.coord.y)), Quaternion.identity) as GameObject;
 			obj.name = n.nodeName;
-
+            
 			NodeObject nodeObj = obj.GetComponent<NodeObject>();
-
+            n.nodeObject = nodeObj;
 			nodeObj.node = n;
 
 			nodeObjects.Add(nodeObj);
 			obj.transform.SetParent(this.transform);
         }
+
+        // Set default start and target nodes
+
+        //startNode = nodes[0];
+        //targetNode = graph.nodes[graph.nodes.Count - 1];    //last node
+        
     }
 
-	public void SetDefaultStateToAllNodes()
+    public void SetDefaultStateToAllNodes()
 	{
 		foreach (NodeObject n in nodeObjects)
 		{
@@ -66,7 +72,7 @@ public class GraphController : MonoBehaviour
 
 	public void SetDefaultState(NodeObject nodeObject)
 	{
-		nodeObject.SetState(initialStateColor, initialStatesprite);
+		nodeObject.SetState(defaultStateColor, defaultStateSprite);
 	}
 
 	public void SetInitialState(NodeObject nodeObject)

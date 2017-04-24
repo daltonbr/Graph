@@ -14,10 +14,6 @@ public class NodeObject : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 	public Node node;
 
-//	public delegate void ClickAction();
-//	public static event ClickAction OnClicked;
-//	public static event ClickAction OnSpaceClicked;
-
 	void Start ()
 	{
 		spriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -29,20 +25,7 @@ public class NodeObject : MonoBehaviour
 		color = spriteRenderer.color;
 		sprite = spriteRenderer.sprite;
 	}
-		
-//	void OnEnable()
-//	{
-//		OnClicked += graphController.SetInitialState(this);
-//		OnSpaceClicked += graphController.SetFinalState(this);
-//	}
-//
-//
-//	void OnDisable()
-//	{
-//		OnClicked -= graphController.SetInitialState(this);
-//		OnSpaceClicked += graphController.SetFinalState(this);
-//	}
-
+	
 	public void SetState(Color newColor, Sprite newSprite)
 	{
 		spriteRenderer.color = newColor;
@@ -68,12 +51,3 @@ public class NodeObject : MonoBehaviour
 
 
 }
-	
-//public class ExampleClass : MonoBehaviour, IPointerDownHandler// required interface when using the OnPointerDown method.
-//{
-//	//Do this when the mouse is clicked over the selectable object this script is attached to.
-//	public void OnPointerDown(PointerEventData eventData)
-//	{
-//		Debug.Log(this.gameObject.name + " Was Clicked.");
-//	}
-//}

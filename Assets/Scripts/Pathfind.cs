@@ -11,13 +11,6 @@ public class Pathfind : MonoBehaviour {
 	private List<Node> nodes;
 
 
-
-//	void Start()
-//	{
-//		startNode = nodes[0];
-//		targetNode = graph.nodes[graph.nodes.Count-1];	//last node
-//	}
-
 	void Awake ()
 	{
 		Assert.IsNotNull(graph, "Pathfind:: Graph couldn't be null");	

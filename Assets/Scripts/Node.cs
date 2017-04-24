@@ -10,9 +10,10 @@ public class Node
 {
 	public string nodeName;
 	public Vector2 coord;
-	public List<Edge> edges;
+    public NodeObject nodeObject;
+    public List<Edge> edges;
 	public Node parent;
-	public NodeObject nodeObject;
+
 
 	public override bool Equals(System.Object obj)
 	{
