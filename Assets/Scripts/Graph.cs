@@ -9,61 +9,16 @@ using UnityEngine;
 public class Graph : ScriptableObject
 {
 	public List<Node> nodes;
-}
 
-[Serializable]
-public class Node
-{
-    public string nodeName;
-    public Vector2 coord;
-    public Color color = Color.blue;
-    public List<Edge> edges;
-	public Node parent;
-
-	public override bool Equals(System.Object obj)
+	public Node GetNodeFromString(string nodeName)
 	{
-		// If parameter is null return false.
-		if (obj == null)
+		foreach (Node n in nodes)
 		{
-			return false;
+			if (string.Equals(n.nodeName, nodeName))
+			{
+				return n;
+			}
 		}
-
-		// If parameter cannot be cast to Node return false.
-		Node n = obj as Node;
-		if ((System.Object)n == null)
-		{
-			return false;
-		}
-
-		// Return true if the fields name:
-		return String.Equals(this.nodeName, n.nodeName);
+		return null;
 	}
-
-	public bool Equals(Node n)
-	{
-		// If parameter is null return false:
-		if ((object)n == null)
-		{
-			return false;
-		}
-
-		// Return true if the fields match:
-		return String.Equals(this.nodeName, n.nodeName);
-	}
-
-	public override int GetHashCode()
-	{
-		return this.nodeName.GetHashCode();
-	}
-
-
-
-}
-	
-
-[Serializable]
-public class Edge
-{
-	public string destinyNodeName;
-	public float weight;
 }

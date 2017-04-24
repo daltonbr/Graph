@@ -20,8 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4555101438128960}
   - component: {fileID: 212995262346389116}
+  - component: {fileID: 58817699050649556}
+  - component: {fileID: 114545574409377972}
   m_Layer: 9
-  m_Name: nodeSprite
+  m_Name: nodePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,12 +36,41 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1741027356682890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 13.0170355, y: 9.871202, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58817699050649556
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1741027356682890}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.64
+--- !u!114 &114545574409377972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1741027356682890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a60e2b88ff1a4607b9368bcefce24c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.49019608, g: 0.73333335, b: 0.7647059, a: 1}
+  sprite: {fileID: 21300000, guid: a693346b7900442c0bea9ab98219a636, type: 3}
+  spriteRenderer: {fileID: 0}
 --- !u!212 &212995262346389116
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -72,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 536384317
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 00c74de44393b4cacb7abf111e7a0615, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a693346b7900442c0bea9ab98219a636, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
