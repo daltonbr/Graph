@@ -141,13 +141,21 @@ public class GraphController : MonoBehaviour
 		{
 			Debug.Log("Path is null");
 		}
-
 	}
 
 	public void DFSButton()
 	{
-		Debug.Log("Tracing DFS Path - NOT IMPLEMENTED!");
-	}
+        //Debug.Log("Tracing DFS Path");
+        path = pathfind.DFS(startNode, targetNode);
+        if (path != null)
+        {
+            HighlightPath(path);
+        }
+        else
+        {
+            Debug.Log("Path is null");
+        }
+    }
 
 
 	// Draw lines to represent EDGES

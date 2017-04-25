@@ -8,17 +8,16 @@ public class Pathfind : MonoBehaviour {
 	public Graph graph;
 
 	public List<Node> path;
-	private List<Node> nodes;
+	//private List<Node> nodes;
 
 
 	void Awake ()
 	{
 		Assert.IsNotNull(graph, "Pathfind:: Graph couldn't be null");	
-		nodes = graph.nodes;
+		//nodes = graph.nodes;
 	}
 
-	//TODO: pass start and target node dinamically
-	public List<Node> BFS(Node startNode, Node targetNode)
+    public List<Node> BFS(Node startNode, Node targetNode)
 	{
 		if(startNode == null || targetNode == null)
 		{
@@ -61,7 +60,13 @@ public class Pathfind : MonoBehaviour {
 		return null;
 	}
 
-	public List<Node> RetracePath(Node startNode, Node endNode) {
+    public List<Node> DFS(Node startNode, Node targetNode)
+    {
+        Debug.Log("Unimplemented method DFS");
+        return null;
+    }
+
+    public List<Node> RetracePath(Node startNode, Node endNode) {
 		List<Node> path = new List<Node>();
 		Node currentNode = endNode;
 

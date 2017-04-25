@@ -12,8 +12,6 @@ public class NodeObject : MonoBehaviour
     public Text textUI;
     //private string textLabel;
     //private Pathfind pathfind;
-    //public Color color;
-    //public Sprite sprite;
 	public SpriteRenderer spriteRenderer;
 	public Node node;
     
@@ -24,12 +22,8 @@ public class NodeObject : MonoBehaviour
 		//pathfind = GetComponentInParent<Pathfind>();
 		Assert.IsNotNull(graphController, "NodeController() in " + this.gameObject.name + " couldn't find GraphLoader script!");
         Assert.IsNotNull(textUI, "NodeController() in " + this.gameObject.name + " couldn't find TextUI!");
-        //		Assert.IsNotNull(pathfind, "NodeController() in " + this.gameObject.name + " couldn't find Pathfind script!");
+        //Assert.IsNotNull(pathfind, "NodeController() in " + this.gameObject.name + " couldn't find Pathfind script!");
         Assert.IsNotNull(spriteRenderer, "NodeController() in " + this.gameObject.name + " couldn't find SpriteRenderer script!");
-                
-  //      color = spriteRenderer.color;
-		//sprite = spriteRenderer.sprite;
-        
 	}
 	
 	public void SetState(Color newColor, Sprite newSprite)
