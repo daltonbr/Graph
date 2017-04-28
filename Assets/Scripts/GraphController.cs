@@ -119,7 +119,7 @@ public class GraphController : MonoBehaviour
 
 	public void HighlightPath(List<Node> path)
 	{
-		string pathString = "BFS path: ";
+		string pathString = "Path: ";
 		foreach (Node n in path)
 		{
 			pathString += n.nodeName + ", ";
