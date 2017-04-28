@@ -19,7 +19,8 @@ public class Pathfind : MonoBehaviour {
 
     public List<Node> BFS(Node startNode, Node targetNode)
 	{
-		if(startNode == null || targetNode == null)
+		// Validate input nodes
+		if (startNode == null || targetNode == null)
 		{
 			Debug.Log("BFS search: startNode or targetNode is null!");
 			return null;
@@ -62,9 +63,63 @@ public class Pathfind : MonoBehaviour {
 
     public List<Node> DFS(Node startNode, Node targetNode)
     {
-        Debug.Log("Unimplemented method DFS");
-        return null;
-    }
+		// Validate input nodes
+		if (startNode == null || targetNode == null)
+		{
+			Debug.Log("DFS search: startNode or targetNode is null!");
+			return null;
+		}
+
+		string pathVisited = "DFS visited path: ";
+
+		Debug.Log("Tracing route DFS: "+ startNode.nodeName + " to " + targetNode.nodeName);
+
+		Stack<Node> stack = new Stack<Node>();
+		HashSet<Node> visitedNodes = new HashSet<Node>();
+
+		stack.Push(startNode);
+
+		while (stack.Count > 0)
+		{
+			Node currentNode = stack.Pop();
+
+//			if (!visitedNodes.Contains(currentNode))
+//			{
+				visitedNodes.Add(currentNode);
+				pathVisited += currentNode.nodeName + ", ";
+
+				// Finded the targetNode
+				if (currentNode == targetNode)
+				{
+					//	Debug.Log(pathVisited);
+					return RetracePath(startNode, targetNode);
+				}
+				
+			// reverse iterating, to go from "left-to-right DFS"
+			List<Node> neighbours = GetNeighbours(currentNode);
+			for (int i = neighbours.Count - 1; i >= 0; i--)
+			{
+				//foreach (Node n in GetNeighbours(currentNode))
+//				{
+				// only Push NOT visited Nodes (to avoid loops)
+				if (!visitedNodes.Contains(neighbours[i]))
+				{
+					stack.Push(neighbours[i]);
+					neighbours[i].parent = currentNode;
+				}
+			}
+//			}
+		}
+
+		Debug.Log(pathVisited);
+		return null;
+	}
+
+	public List<Node> UCS(Node startNode, Node targetNode)
+	{
+		Debug.Log("UCS not implemented!");
+		return null;
+	}
 
     public List<Node> RetracePath(Node startNode, Node endNode) {
 		List<Node> path = new List<Node>();
