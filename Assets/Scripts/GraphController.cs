@@ -120,43 +120,39 @@ public class GraphController : MonoBehaviour
 	public void HighlightPath(List<Node> path)
 	{
 		string pathString = "Path: ";
-		foreach (Node n in path)
-		{
-			pathString += n.nodeName + ", ";
-			//TODO: set pathColor
-		}
-		Debug.Log(pathString);
-	}
 
-
-	public void BFSButton()
-	{
-		//Debug.Log("Tracing BFS Path");
-		path = pathfind.BFS(startNode, targetNode);
 		if (path != null)
 		{
-			HighlightPath(path);
-		}
-		else
+			foreach (Node n in path)
+			{
+				pathString += n.nodeName + ", ";
+				//TODO: set pathColor
+			}
+			Debug.Log(pathString);
+		} else
 		{
 			Debug.Log("Path is null");
 		}
 	}
 
+
+	public void BFSButton()
+	{
+		path = pathfind.BFS(startNode, targetNode);
+		HighlightPath(path);
+	}
+
 	public void DFSButton()
 	{
-        //Debug.Log("Tracing DFS Path");
         path = pathfind.DFS(startNode, targetNode);
-        if (path != null)
-        {
-            HighlightPath(path);
-        }
-        else
-        {
-            Debug.Log("Path is null");
-        }
+        HighlightPath(path);
     }
 
+	public void UCSButton()
+	{
+		path = pathfind.UCS(startNode, targetNode);
+		HighlightPath(path);
+	}
 
 	// Draw lines to represent EDGES
 	void OnDrawGizmos()
