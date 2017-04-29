@@ -14,7 +14,7 @@ MonoBehaviour:
   nodes:
   - nodeName: I
     coord: {x: 2, y: 17}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: A
       weight: 3
@@ -26,126 +26,180 @@ MonoBehaviour:
       weight: 5
   - nodeName: A
     coord: {x: 0, y: 15}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: B
       weight: 3
+    - destinyNodeName: I
+      weight: 3
   - nodeName: B
     coord: {x: 2, y: 13}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: A
+      weight: 3
     - destinyNodeName: C
+      weight: 4
+    - destinyNodeName: I
       weight: 4
     - destinyNodeName: T
       weight: 11
   - nodeName: D
     coord: {x: 0, y: 7}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: C
+      weight: 3
     - destinyNodeName: E
       weight: 2
   - nodeName: E
     coord: {x: 2, y: 6}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: C
+      weight: 3
+    - destinyNodeName: D
+      weight: 2
     - destinyNodeName: G
       weight: 3
   - nodeName: G
     coord: {x: 2, y: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
-    - destinyNodeName: H
+    - destinyNodeName: E
       weight: 3
+    - destinyNodeName: H
+      weight: 2
     - destinyNodeName: K
       weight: 3
   - nodeName: H
     coord: {x: 0, y: 1}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: G
+      weight: 3
     - destinyNodeName: K
       weight: 2
   - nodeName: K
     coord: {x: 2, y: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: F
       weight: 8
+    - destinyNodeName: G
+      weight: 3
+    - destinyNodeName: H
+      weight: 2
   - nodeName: F
     coord: {x: 10, y: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
-    - destinyNodeName: W
+    - destinyNodeName: K
       weight: 8
     - destinyNodeName: M
       weight: 8
+    - destinyNodeName: W
+      weight: 8
   - nodeName: W
     coord: {x: 7, y: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: F
+      weight: 8
     - destinyNodeName: T
       weight: 3
   - nodeName: T
     coord: {x: 7, y: 6}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: B
+      weight: 11
     - destinyNodeName: S
       weight: 4
     - destinyNodeName: V
       weight: 7
+    - destinyNodeName: W
+      weight: 3
   - nodeName: S
     coord: {x: 7, y: 10}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: R
       weight: 2
+    - destinyNodeName: T
+      weight: 4
   - nodeName: R
     coord: {x: 9, y: 10}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: S
+      weight: 2
     - destinyNodeName: Q
       weight: 2
   - nodeName: Q
     coord: {x: 9, y: 8}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: P
       weight: 2
+    - destinyNodeName: R
+      weight: 2
   - nodeName: P
     coord: {x: 11, y: 8}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: N
       weight: 3
+    - destinyNodeName: Q
+      weight: 2
     - destinyNodeName: U
       weight: 3
   - nodeName: U
     coord: {x: 14, y: 8}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: P
+      weight: 3
     - destinyNodeName: V
       weight: 2
   - nodeName: V
     coord: {x: 14, y: 6}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    edges: []
+    nodeObject: {fileID: 0}
+    edges:
+    - destinyNodeName: U
+      weight: 2
+    - destinyNodeName: T
+      weight: 7
   - nodeName: N
     coord: {x: 11, y: 11}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    edges: []
+    nodeObject: {fileID: 0}
+    edges:
+    - destinyNodeName: I
+      weight: 12
+    - destinyNodeName: P
+      weight: 3
   - nodeName: L
     coord: {x: 7, y: 17}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: I
+      weight: 5
     - destinyNodeName: M
       weight: 27
   - nodeName: M
     coord: {x: 18, y: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    edges: []
+    nodeObject: {fileID: 0}
+    edges:
+    - destinyNodeName: F
+      weight: 8
+    - destinyNodeName: L
+      weight: 27
   - nodeName: C
     coord: {x: 2, y: 9}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
+    - destinyNodeName: B
+      weight: 4
     - destinyNodeName: D
       weight: 3
     - destinyNodeName: E
