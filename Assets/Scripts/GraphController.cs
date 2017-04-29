@@ -125,8 +125,9 @@ public class GraphController : MonoBehaviour
 		{
 			foreach (Node n in path)
 			{
+                if (n.Equals(startNode) || n.Equals(targetNode)) continue;
 				pathString += n.nodeName + ", ";
-				//TODO: set pathColor
+                n.nodeObject.SetState(pathStateColor, targetStatesprite);
 			}
 			Debug.Log(pathString);
 		} else
@@ -135,22 +136,33 @@ public class GraphController : MonoBehaviour
 		}
 	}
 
+    public void ClearHighlightPath()
+    {
+        foreach (Node n in graph.nodes)
+        {
+            if (n.Equals(startNode) || n.Equals(targetNode)) continue;
+            SetDefaultState(n.nodeObject);
+        }
+    }
 
 	public void BFSButton()
 	{
-		path = pathfind.BFS(startNode, targetNode);
+        ClearHighlightPath();
+        path = pathfind.BFS(startNode, targetNode);
 		HighlightPath(path);
 	}
 
 	public void DFSButton()
 	{
+        ClearHighlightPath();
         path = pathfind.DFS(startNode, targetNode);
         HighlightPath(path);
     }
 
 	public void UCSButton()
 	{
-		path = pathfind.UCS(startNode, targetNode);
+        ClearHighlightPath();
+        path = pathfind.UCS(startNode, targetNode);
 		HighlightPath(path);
 	}
 
