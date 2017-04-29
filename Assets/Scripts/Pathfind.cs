@@ -83,32 +83,27 @@ public class Pathfind : MonoBehaviour {
 		{
 			Node currentNode = stack.Pop();
 
-//			if (!visitedNodes.Contains(currentNode))
-//			{
-				visitedNodes.Add(currentNode);
-				pathVisited += currentNode.nodeName + ", ";
+			visitedNodes.Add(currentNode);
+			pathVisited += currentNode.nodeName + ", ";
 
-				// Finded the targetNode
-				if (currentNode == targetNode)
-				{
-					//	Debug.Log(pathVisited);
-					return RetracePath(startNode, targetNode);
-				}
+			// Finded the targetNode
+			if (currentNode == targetNode)
+			{
+				Debug.Log(pathVisited);
+				return RetracePath(startNode, targetNode);
+			}
 				
-			// reverse iterating, to go from "left-to-right DFS"
+			// reverse iterating, to go from "left-to-right DFS"...not really necessary
 			List<Node> neighbours = GetNeighbours(currentNode);
 			for (int i = neighbours.Count - 1; i >= 0; i--)
 			{
-				//foreach (Node n in GetNeighbours(currentNode))
-//				{
 				// only Push NOT visited Nodes (to avoid loops)
 				if (!visitedNodes.Contains(neighbours[i]))
 				{
 					stack.Push(neighbours[i]);
 					neighbours[i].parent = currentNode;
-				}
+                }
 			}
-//			}
 		}
 
 		Debug.Log(pathVisited);
