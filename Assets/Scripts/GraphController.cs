@@ -74,7 +74,6 @@ public class GraphController : MonoBehaviour
         // Set default start and target nodes
         SetInitialState(nodeObjects[0]);
         SetTargetState(nodeObjects[nodes.Count-1]);
-                
     }
 
     public void SetDefaultStateToAllNodes()
@@ -102,7 +101,6 @@ public class GraphController : MonoBehaviour
 	
 	startNode = nodeObject.node;
 	}
-
 
 	public void SetTargetState(NodeObject nodeObject)
 	{

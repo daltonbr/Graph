@@ -6,15 +6,11 @@ using UnityEngine.Assertions;
 public class Pathfind : MonoBehaviour {
 
 	public Graph graph;
-
 	public List<Node> path;
-	//private List<Node> nodes;
-
 
 	void Awake ()
 	{
 		Assert.IsNotNull(graph, "Pathfind:: Graph couldn't be null");	
-		//nodes = graph.nodes;
 	}
 
     public List<Node> BFS(Node startNode, Node targetNode)
@@ -30,7 +26,7 @@ public class Pathfind : MonoBehaviour {
 
 		Debug.Log("Tracing route BFS: "+ startNode.nodeName + " to " + targetNode.nodeName);
 
-		List<Node> visitedNodes = new List<Node>();
+		HashSet<Node> visitedNodes = new HashSet<Node>();
 		Queue<Node> queue = new Queue<Node>();
 
 		visitedNodes.Add(startNode);
@@ -63,14 +59,14 @@ public class Pathfind : MonoBehaviour {
 
     public List<Node> DFS(Node startNode, Node targetNode)
     {
-		// Validate input nodes
-		if (startNode == null || targetNode == null)
-		{
-			Debug.Log("DFS search: startNode or targetNode is null!");
-			return null;
-		}
+        // Validate input nodes
+        if (startNode == null || targetNode == null)
+        {
+            Debug.Log("DFS search: startNode or targetNode is null!");
+            return null;
+        }
 
-		string pathVisited = "DFS visited path: ";
+        string pathVisited = "DFS visited path: ";
 
 		Debug.Log("Tracing route DFS: "+ startNode.nodeName + " to " + targetNode.nodeName);
 
@@ -112,9 +108,60 @@ public class Pathfind : MonoBehaviour {
 
 	public List<Node> UCS(Node startNode, Node targetNode)
 	{
-		Debug.Log("UCS not implemented!");
-		return null;
-	}
+        // Validate input nodes
+        if (startNode == null || targetNode == null)
+        {
+            Debug.Log("UCS search: startNode or targetNode is null!");
+            return null;
+        }
+
+        List<Node> openSet = new List<Node>();
+        HashSet<Node> visitedNodes = new HashSet<Node>();
+
+        string pathVisited = "UCS visited path: ";
+        Debug.Log("Tracing route UCS: " + startNode.nodeName + " to " + targetNode.nodeName);    
+
+        openSet.Add(startNode);
+
+        while (openSet.Count > 0)
+        {
+            Node currentNode = openSet[0];
+
+            for (int i = 1; i < openSet.Count; i++)
+            {
+                if (openSet[i].cost < currentNode.cost)
+                {
+                    currentNode = openSet[i];
+                }
+            }
+
+            List<Node> neighbours = GetNeighbours(currentNode);
+            for (int i = neighbours.Count - 1; i >= 0; i--)
+            {
+                // only Push NOT visited Nodes (to avoid loops)
+                if (!visitedNodes.Contains(neighbours[i]))
+                {
+                    openSet.Remove(neighbours[i]);
+                    neighbours[i].parent = currentNode;
+                }
+            }
+
+            pathVisited += currentNode.nodeName + ", ";
+            openSet.Remove(currentNode);
+            visitedNodes.Add(currentNode);
+            
+            // Finded the targetNode
+            if (currentNode == targetNode)
+            {
+                Debug.Log(pathVisited);
+                return RetracePath(startNode, targetNode);
+            }
+            
+        }
+
+        Debug.Log(pathVisited);
+        return null;
+    }
 
     public List<Node> RetracePath(Node startNode, Node endNode) {
 		List<Node> path = new List<Node>();
@@ -127,22 +174,26 @@ public class Pathfind : MonoBehaviour {
 		path.Reverse();
 
 		return path;
-	}
+    }
 
-	public List<Node> GetNeighbours(Node node)
+	
+public List<Node> GetNeighbours(Node node)
 	{
 		List<Node> neighbours = new List<Node>();
-		Node _node = new Node();
 		foreach (Edge e in node.edges)
 		{
-			_node = graph.GetNodeFromString(e.destinyNodeName);
-
+			Node _node = graph.GetNodeFromString(e.destinyNodeName);
 			if (_node != null)
 			{
 				neighbours.Add(_node);		
 			}
 		}
+        return neighbours;
 
+        // This part is removed due to the new Graph structure
+        // Edges in undirect graph (our main graph) must be represented twice
+
+        /*
         // TODO: rethink the graph structure to avoid this clumky, expensive and avoidable cross-reference query
         // Loop all other nodes
         foreach (Node n in graph.nodes)
@@ -161,7 +212,8 @@ public class Pathfind : MonoBehaviour {
                 }
             }
         }
-		return neighbours;
-	}
+
+        */
+    }
 
 }
