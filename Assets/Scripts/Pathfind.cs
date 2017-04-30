@@ -122,11 +122,12 @@ public class Pathfind : MonoBehaviour {
         Debug.Log("Tracing route UCS: " + startNode.nodeName + " to " + targetNode.nodeName);    
 
         openSet.Add(startNode);
+        startNode.cost = 0;
 
         while (openSet.Count > 0)
         {
+            // Get the node in openSet with the lowest cost
             Node currentNode = openSet[0];
-
             for (int i = 1; i < openSet.Count; i++)
             {
                 if (openSet[i].cost < currentNode.cost)
@@ -135,21 +136,10 @@ public class Pathfind : MonoBehaviour {
                 }
             }
 
-            List<Node> neighbours = GetNeighbours(currentNode);
-            for (int i = neighbours.Count - 1; i >= 0; i--)
-            {
-                // only Push NOT visited Nodes (to avoid loops)
-                if (!visitedNodes.Contains(neighbours[i]))
-                {
-                    openSet.Remove(neighbours[i]);
-                    neighbours[i].parent = currentNode;
-                }
-            }
-
-            pathVisited += currentNode.nodeName + ", ";
             openSet.Remove(currentNode);
             visitedNodes.Add(currentNode);
-            
+            pathVisited += currentNode.nodeName + ", ";
+
             // Finded the targetNode
             if (currentNode == targetNode)
             {
@@ -157,9 +147,32 @@ public class Pathfind : MonoBehaviour {
                 return RetracePath(startNode, targetNode);
             }
             
+            // Update all neighbours cost
+            foreach (Edge e in currentNode.edges)
+            {
+                Node childNode = graph.GetNodeFromString(e.destinyNodeName);
+                if (visitedNodes.Contains(childNode)) continue;
+
+                if (!openSet.Contains(childNode) || 
+                    childNode.cost > currentNode.cost + e.weight)
+                {
+                    childNode.parent = currentNode;
+                    childNode.cost = currentNode.cost + e.weight;
+                    childNode.nodeObject.SetCostLabel(childNode.cost.ToString());
+
+                    if (!openSet.Contains(childNode))
+                    {
+                        openSet.Add(childNode);
+                    }
+                }
+
+                if (!openSet.Contains(childNode))
+                    openSet.Add(childNode);
+            }
+            
         }
 
-        Debug.Log(pathVisited);
+        //Debug.Log(pathVisited);
         return null;
     }
 
@@ -171,13 +184,13 @@ public class Pathfind : MonoBehaviour {
 			path.Add(currentNode);
 			currentNode = currentNode.parent;
 		}
+        path.Add(currentNode);
 		path.Reverse();
 
 		return path;
     }
 
-	
-public List<Node> GetNeighbours(Node node)
+    public List<Node> GetNeighbours(Node node)
 	{
 		List<Node> neighbours = new List<Node>();
 		foreach (Edge e in node.edges)

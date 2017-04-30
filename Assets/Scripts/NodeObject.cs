@@ -10,8 +10,7 @@ public class NodeObject : MonoBehaviour
 {
 	private GraphController graphController;
     public Text textUI;
-    //private string textLabel;
-    //private Pathfind pathfind;
+    public Text costTextUI;
 	public SpriteRenderer spriteRenderer;
 	public Node node;
     
@@ -22,8 +21,10 @@ public class NodeObject : MonoBehaviour
 		//pathfind = GetComponentInParent<Pathfind>();
 		Assert.IsNotNull(graphController, "NodeController() in " + this.gameObject.name + " couldn't find GraphLoader script!");
         Assert.IsNotNull(textUI, "NodeController() in " + this.gameObject.name + " couldn't find TextUI!");
+        Assert.IsNotNull(costTextUI, "NodeController() in " + this.gameObject.name + " couldn't find costTextUI!");
         //Assert.IsNotNull(pathfind, "NodeController() in " + this.gameObject.name + " couldn't find Pathfind script!");
         Assert.IsNotNull(spriteRenderer, "NodeController() in " + this.gameObject.name + " couldn't find SpriteRenderer script!");
+
 	}
 	
 	public void SetState(Color newColor, Sprite newSprite)
@@ -35,6 +36,11 @@ public class NodeObject : MonoBehaviour
     public void SetTextLabel(string _textLabel)
     {
         this.textUI.text = _textLabel;
+    }
+
+    public void SetCostLabel(string _costLabel)
+    {
+        this.costTextUI.text = _costLabel;
     }
 
 	void OnMouseOver()

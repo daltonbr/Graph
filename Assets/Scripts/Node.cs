@@ -14,7 +14,7 @@ public class Node
     public List<Edge> edges;
 	public Node parent;
     [NonSerialized]
-    public int cost;
+    public float cost;
 
 	public override bool Equals(System.Object obj)
 	{
