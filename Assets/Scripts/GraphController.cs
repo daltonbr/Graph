@@ -175,8 +175,34 @@ public class GraphController : MonoBehaviour
 		HighlightPath(path);
 	}
 
-	// Draw lines to represent EDGES
-	void OnDrawGizmos()
+    public void HillClimbingButton()
+    {
+        Debug.Log("HC not implemented!");
+        //ClearHighlightPath();
+        //ClearAllCostLabels();
+        //path = pathfind.HillClimbing(startNode, targetNode);
+        //HighlightPath(path);
+    }
+    public void GreedyButton()
+    {
+        Debug.Log("Greedy not implemented!");
+        //ClearHighlightPath();
+        //ClearAllCostLabels();
+        //path = pathfind.Greedy(startNode, targetNode);
+        //HighlightPath(path);
+    }
+
+    public void AStarButton()
+    {
+        Debug.Log("A* not implemented!");
+        //ClearHighlightPath();
+        //ClearAllCostLabels();
+        //path = pathfind.AStar(startNode, targetNode);
+        //HighlightPath(path);
+    }
+
+    // Draw lines to represent EDGES
+    void OnDrawGizmos()
 	{
 		Gizmos.color = Color.blue;
 		if (nodes != null)
