@@ -177,11 +177,10 @@ public class GraphController : MonoBehaviour
 
     public void HillClimbingButton()
     {
-        Debug.Log("HC not implemented!");
-        //ClearHighlightPath();
-        //ClearAllCostLabels();
-        //path = pathfind.HillClimbing(startNode, targetNode);
-        //HighlightPath(path);
+        ClearHighlightPath();
+        ClearAllCostLabels();
+        path = pathfind.HillClimbing(startNode, targetNode);
+        HighlightPath(path);
     }
     public void GreedyButton()
     {
