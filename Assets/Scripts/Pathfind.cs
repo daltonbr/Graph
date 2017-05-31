@@ -238,6 +238,68 @@ public class Pathfind : MonoBehaviour {
         return null;
     }
 
+    public List<Node> Greedy(Node startNode, Node targetNode)
+    {
+        // Validate input nodes
+        if (startNode == null || targetNode == null)
+        {
+            Debug.Log("Greedy search: startNode or targetNode is null!");
+            return null;
+        }
+
+        string pathVisited = "Greedy visited path: ";
+
+        Debug.Log("Tracing route Greedy: " + startNode.nodeName + " to " + targetNode.nodeName);
+
+        Stack<Node> stack = new Stack<Node>();
+        HashSet<Node> visitedNodes = new HashSet<Node>();
+
+        stack.Push(startNode);
+        startNode.cost = 0;
+
+        while (stack.Count > 0)
+        {
+            Node currentNode = stack.Pop();
+
+            visitedNodes.Add(currentNode);
+            pathVisited += currentNode.nodeName + ", ";
+
+            // Finded the targetNode
+            if (currentNode == targetNode)
+            {
+                Debug.Log(pathVisited);
+                return RetracePath(startNode, targetNode);
+            }
+
+            float currenteMinorCost = Mathf.Infinity;
+            Node nextNode = null;
+
+            // Update all neighbours cost
+            foreach (Edge e in currentNode.edges)
+            {
+                Node childNode = graph.GetNodeFromString(e.destinyNodeName);
+                if (visitedNodes.Contains(childNode)) continue;
+
+                if (e.weight < currenteMinorCost)
+                {
+                    currenteMinorCost = e.weight;
+                    nextNode = childNode;
+                    childNode.parent = currentNode;
+                    childNode.cost = currentNode.cost + e.weight;
+                    childNode.nodeObject.SetCostLabel(childNode.cost.ToString());
+
+                    if (!visitedNodes.Contains(childNode))
+                    {
+                        visitedNodes.Add(childNode);
+                    }
+                }
+            }
+            stack.Push(nextNode);
+        }
+        Debug.Log(pathVisited);
+        return null;
+    }
+
     public List<Node> RetracePath(Node startNode, Node endNode) {
 		List<Node> path = new List<Node>();
 		Node currentNode = endNode;

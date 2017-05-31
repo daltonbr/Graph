@@ -184,11 +184,10 @@ public class GraphController : MonoBehaviour
     }
     public void GreedyButton()
     {
-        Debug.Log("Greedy not implemented!");
-        //ClearHighlightPath();
-        //ClearAllCostLabels();
-        //path = pathfind.Greedy(startNode, targetNode);
-        //HighlightPath(path);
+        ClearHighlightPath();
+        ClearAllCostLabels();
+        path = pathfind.Greedy(startNode, targetNode);
+        HighlightPath(path);
     }
 
     public void AStarButton()
