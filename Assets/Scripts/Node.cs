@@ -15,6 +15,8 @@ public class Node
 	public Node parent;
     [NonSerialized]
     public float cost;
+    public float hCost;     // heuristic Cost (to reach the target node)
+    public float fCost;     // fCost = cost + hCost
 
 	public override bool Equals(System.Object obj)
 	{

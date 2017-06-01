@@ -300,6 +300,85 @@ public class Pathfind : MonoBehaviour {
         return null;
     }
 
+    public List<Node> AStar(Node startNode, Node targetNode)
+    {
+        // Validate input nodes
+        if (startNode == null || targetNode == null)
+        {
+            Debug.Log("A*: startNode or targetNode is null!");
+            return null;
+        }
+
+        List<Node> openSet = new List<Node>();
+        HashSet<Node> visitedNodes = new HashSet<Node>();
+
+        string pathVisited = "A* visited path: ";
+        Debug.Log("A*: " + startNode.nodeName + " to " + targetNode.nodeName);
+
+        openSet.Add(startNode);
+        startNode.cost = 0;
+        startNode.hCost = Vector2.Distance(targetNode.coord, startNode.coord);
+        startNode.fCost = startNode.cost + startNode.hCost;
+
+        while (openSet.Count > 0)
+        {
+            // Get the node in openSet with the lowest fCost
+            Node currentNode = openSet[0];
+            for (int i = 1; i < openSet.Count; i++)
+            {
+                if (openSet[i].fCost < currentNode.fCost)
+                {
+                    currentNode = openSet[i];
+                }
+            }
+
+            // Finded the targetNode
+            if (currentNode == targetNode)
+            {
+                Debug.Log(pathVisited);
+                return RetracePath(startNode, targetNode);
+            }
+
+            // hCost is the distance between current and target node
+            currentNode.hCost = Vector2.Distance(targetNode.coord, currentNode.coord);
+
+            openSet.Remove(currentNode);
+            visitedNodes.Add(currentNode);
+            pathVisited += currentNode.nodeName + ", ";
+
+            // Update all neighbours cost
+            foreach (Edge e in currentNode.edges)
+            {
+                Node childNode = graph.GetNodeFromString(e.destinyNodeName);
+                if (visitedNodes.Contains(childNode)) continue;
+
+                // Estimating the cost of this neighbor
+                float tentativeCost = currentNode.cost + e.weight;
+
+                if (!openSet.Contains(childNode))   // Discover a new node
+                {
+                    openSet.Add(childNode);
+                } else
+                {
+                    if (tentativeCost >= childNode.cost) continue;  // This is not a better path
+                }
+
+                childNode.parent = currentNode;
+                childNode.cost = tentativeCost;
+                childNode.hCost = Vector2.Distance(childNode.coord, targetNode.coord);
+                childNode.fCost = childNode.cost + childNode.hCost;
+                childNode.nodeObject.SetCostLabel(childNode.cost.ToString());
+            }
+        }
+        Debug.Log(pathVisited);
+        return null;
+    }
+
+    private float calculateHCost(Node nodeA, Node targetNode)
+    {
+        return Vector2.Distance(nodeA.coord, targetNode.coord);
+    }
+
     public List<Node> RetracePath(Node startNode, Node endNode) {
 		List<Node> path = new List<Node>();
 		Node currentNode = endNode;

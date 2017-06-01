@@ -192,11 +192,10 @@ public class GraphController : MonoBehaviour
 
     public void AStarButton()
     {
-        Debug.Log("A* not implemented!");
-        //ClearHighlightPath();
-        //ClearAllCostLabels();
-        //path = pathfind.AStar(startNode, targetNode);
-        //HighlightPath(path);
+        ClearHighlightPath();
+        ClearAllCostLabels();
+        path = pathfind.AStar(startNode, targetNode);
+        HighlightPath(path);
     }
 
     // Draw lines to represent EDGES

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b84398bd44828bd4c9ee3c2006423004, type: 3}
-  m_Name: Graph_BACKUP
+  m_Name: Graph_BACKUP_OLD
   m_EditorClassIdentifier: 
   nodes:
   - nodeName: I
     coord: {x: 2, y: 17}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: A
       weight: 3
@@ -26,13 +26,13 @@ MonoBehaviour:
       weight: 5
   - nodeName: A
     coord: {x: 0, y: 15}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: B
       weight: 3
   - nodeName: B
     coord: {x: 2, y: 13}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: C
       weight: 4
@@ -40,19 +40,19 @@ MonoBehaviour:
       weight: 11
   - nodeName: D
     coord: {x: 0, y: 7}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: E
       weight: 2
   - nodeName: E
     coord: {x: 2, y: 6}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: G
       weight: 3
   - nodeName: G
     coord: {x: 2, y: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: H
       weight: 3
@@ -60,19 +60,19 @@ MonoBehaviour:
       weight: 3
   - nodeName: H
     coord: {x: 0, y: 1}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: K
       weight: 2
   - nodeName: K
     coord: {x: 2, y: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: F
       weight: 8
   - nodeName: F
     coord: {x: 10, y: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: W
       weight: 8
@@ -80,13 +80,13 @@ MonoBehaviour:
       weight: 8
   - nodeName: W
     coord: {x: 7, y: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: T
       weight: 3
   - nodeName: T
     coord: {x: 7, y: 6}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: S
       weight: 4
@@ -94,25 +94,25 @@ MonoBehaviour:
       weight: 7
   - nodeName: S
     coord: {x: 7, y: 10}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: R
       weight: 2
   - nodeName: R
     coord: {x: 9, y: 10}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: Q
       weight: 2
   - nodeName: Q
     coord: {x: 9, y: 8}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: P
       weight: 2
   - nodeName: P
     coord: {x: 11, y: 8}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: N
       weight: 3
@@ -120,31 +120,31 @@ MonoBehaviour:
       weight: 3
   - nodeName: U
     coord: {x: 14, y: 8}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: V
       weight: 2
   - nodeName: V
     coord: {x: 14, y: 6}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges: []
   - nodeName: N
     coord: {x: 11, y: 11}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges: []
   - nodeName: L
     coord: {x: 7, y: 17}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: M
       weight: 27
   - nodeName: M
     coord: {x: 18, y: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges: []
   - nodeName: C
     coord: {x: 2, y: 9}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    nodeObject: {fileID: 0}
     edges:
     - destinyNodeName: D
       weight: 3
