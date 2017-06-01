@@ -6,6 +6,10 @@
 * DFS (Breadth First Search)
 * DFS (Depth First Search)
 * UCS (Uniform Cost Search)
+* Hill Climbing (need improvements in heuristics)
+* Greedy
+* A*
+
 
 ## How to use
 [Install Unity3d](https://unity3d.com)
