@@ -3,7 +3,7 @@
 :octocat: This is a project for **Graph Search** Methods in Unity3D and C#. :alien:
 
 ## What we have
-* DFS (Breadth First Search)
+* BFS (Breadth First Search)
 * DFS (Depth First Search)
 * UCS (Uniform Cost Search)
 * Hill Climbing (need improvements in heuristics)
@@ -26,5 +26,5 @@
 This will create a new graph object serialized as a Unity **.asset** file (stored in ~/Graph/Assets/Graphs/Graph.asset)
 
 ## About
-This project is develop for the Artificial Intelligence course for my Computer Science undergrad at UNESP - SP - Brazil
+This project was develop for the Artificial Intelligence course for my Computer Science undergrad at UNESP - SP - Brazil
 
