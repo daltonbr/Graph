@@ -1,6 +1,6 @@
 # Graph
 
-:octocat: This is a project for **Graph Search** Methods in Unity3D and C#. :alien:
+:octocat: This is a project for **Graph Search** Methods in Unity3D and C#. :alien:  
 I also use here **Scriptable Objects** to store the Graph (more details bellow)
 
 ## What we have
